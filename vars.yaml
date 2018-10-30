@@ -1,0 +1,30 @@
+- hosts: all 
+  vars:
+     filename: "abcd.txt"
+  vars_files:
+    - vars/test_vars.yml
+  tasks:
+   - name: test playbook vars
+     file: path="/tmp/{{ filename }}" state=touch
+     tags: playbook_vars
+   
+   - name: test setup vars 
+     copy: dest=/tmp/a.txt content="{{ ansible_all_ipv4_addresses }}" 
+     tags: setup_vars 
+
+   - name: test hosts vars
+     copy: dest="/tmp/{{ place }}" content="{{ name }}"
+     tags: hosts_vars
+
+   - name: test var files
+     file: path="/tmp/{{ var_file }}" state=touch
+     tags: file_var 
+
+   - name: test register var
+     shell: /bin/cat /etc/centos-release
+     ignore_errors: true
+     register: release
+     tags: register_var
+
+   - name: show release 
+     debug: var=release

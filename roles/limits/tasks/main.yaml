@@ -1,0 +1,15 @@
+- name: update /etc/security/limits.conf 永久有效
+  tags: ulimit
+  blockinfile:
+    dest: /etc/security/limits.conf
+    insertbefore: '# End of file'
+    block: |
+      * - nofile 655360
+      * soft nproc 655360
+      * hard nproc 655360
+      * soft nofile 655360
+      * hard nofile 655360
+
+#- name: 临时生效
+#  tags: ulimit
+#  shell: ulimit -n 655361

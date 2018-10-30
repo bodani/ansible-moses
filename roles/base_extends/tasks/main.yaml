@@ -1,0 +1,4 @@
+- name: 安装基础扩展软件
+  yum: name={{ item }} state=latest
+  with_items:
+    - '{{ base_exentens_libs }}'

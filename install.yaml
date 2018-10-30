@@ -1,0 +1,21 @@
+- hosts: all
+  tasks:
+  - name: install base packages
+    yum: name={{ item }}  state=installed
+    with_items:
+      - vim
+      - git
+      - wget
+      - psmisc 
+      - net-tools
+      - bash-completion 
+  - name: create groups
+    group: name={{ item }} state=present
+    with_items:
+      - group1
+      - group2 
+  - name: create users
+    user: name={{ item.user }} group={{ item.group }} state=present
+    with_items:
+      - {user: 'user1' , group: 'group1'}
+      - {user: 'user2' , group: 'group2'}

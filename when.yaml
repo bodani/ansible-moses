@@ -1,0 +1,9 @@
+- hosts: all
+  tasks:
+  - name: centos 6 task
+    shell: echo "i am centeos 6"
+    when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
+  - name: centos 7 task
+    shell: echo "i am centeos 7"
+    when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+     

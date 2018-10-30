@@ -1,0 +1,7 @@
+[webservers]
+10.1.88.72 name=iam72
+10.1.88.73 name=iam73
+
+[webservers:vars]
+place="host_vars.txt"
+

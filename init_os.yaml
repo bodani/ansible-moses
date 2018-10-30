@@ -1,0 +1,8 @@
+- hosts: all
+  user: root
+  roles: 
+  - sysctl
+  - base_extends
+  - limits
+  - firewalld
+  - ntp 

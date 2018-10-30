@@ -1,0 +1,6 @@
+base_exentens_libs:
+ - epel-release
+ - net-tools
+ - bind-utils
+ - wget
+ - gcc
